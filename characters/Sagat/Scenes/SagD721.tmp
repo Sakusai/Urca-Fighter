@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dd2j306mf0d2c" path="res://characters/Sagat/Asset/Crouch.png" id="1_qbra3"]
 [ext_resource type="Texture2D" uid="uid://ch6351u5vnjh6" path="res://characters/Sagat/Asset/Jump.png" id="2_gho1e"]
 [ext_resource type="Texture2D" uid="uid://rr4xd4k34xjj" path="res://characters/Sagat/Asset/Walk.png" id="2_te245"]
-[ext_resource type="Texture2D" uid="uid://dcvke7pkqh7em" path="res://characters/Sagat/Asset/L.Punch.Foward.png" id="4_657gx"]
+[ext_resource type="Texture2D" uid="uid://dcvke7pkqh7em" path="res://characters/Sagat/Asset/L.Punch.Foward-removebg-preview.png" id="4_g2kdr"]
 
 [sub_resource type="GDScript" id="GDScript_nqbla"]
 script/source = "extends CharacterBody2D
@@ -46,9 +46,6 @@ func _process(delta):
 	if Input.is_action_pressed(\"ui_down\") :
 		if _animation_player.is_playing():
 			_animation_player.play(\"Crouch\")
-	elif Input.is_action_pressed(\"L.Punch\") and Input.is_action_pressed(\"ui_right\"):
-		if _animation_player.is_playing():
-			_animation_player.play(\"L.Punch.Forward\")
 	elif Input.is_action_pressed(\"L.Punch\"):
 		if _animation_player.is_playing():
 			_animation_player.play(\"L.punch\")
@@ -57,6 +54,8 @@ func _process(delta):
 			_animation_player.play(\"Jump\")
 	elif Input.is_action_pressed(\"ui_right\") or Input.is_action_pressed(\"ui_left\"):
 		_animation_player.play(\"Walk\")
+		if Input.is_action_pressed(\"L.Punch\"):
+			_animation_player.play(\"L.Punch.Forward\")
 	
 	else:
 		_animation_player.play(\"Hidle\")
@@ -103,11 +102,11 @@ atlas = ExtResource("2_gho1e")
 region = Rect2(164, 0, 54, 135)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvqgg"]
-atlas = ExtResource("4_657gx")
+atlas = ExtResource("4_g2kdr")
 region = Rect2(85, 0, 80, 124)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lt1ab"]
-atlas = ExtResource("4_657gx")
+atlas = ExtResource("4_g2kdr")
 region = Rect2(0, 0, 80, 124)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gj6if"]
@@ -253,4 +252,4 @@ texture_repeat = 1
 position = Vector2(405, 225)
 sprite_frames = SubResource("SpriteFrames_eekc1")
 animation = &"L.Punch.Forward"
-frame_progress = 0.49283
+frame_progress = 0.606661
