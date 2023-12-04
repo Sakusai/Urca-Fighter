@@ -252,5 +252,5 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(405, 225)
 sprite_frames = SubResource("SpriteFrames_eekc1")
-animation = &"L.Punch.Forward"
-frame_progress = 0.49283
+animation = &"L.punch"
+frame_progress = 0.0947952
