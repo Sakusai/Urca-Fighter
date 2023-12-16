@@ -45,11 +45,12 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	velocity_jump.y += get_gravity() * delta
-	velocity_jump.x = get_input_velocity() * SPEED
+	velocity_jump.x = get_input_velocity() * move_speed
 	
 	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
 		jump()
 	
+	velocity_jump = move_and_slide(velocity_jump, Vector2.UP)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
