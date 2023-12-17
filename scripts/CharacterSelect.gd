@@ -7,7 +7,7 @@ var characters = []          # Array to store all the characters the player can 
 var currentSelected = 0      # Spot of the cursor within the characters[]
 var currentColumnSpot = 0    # Spot of the cursor based on the column
 var currentRowSpot = 0       # Spot of the cursor based on the row
-
+var choice
 @export var player1Text : Texture  # Cursor Texture for when Player 1 is making a decision    
 @export var player2Text : Texture  # Cursor Texture for when Player 2 is making a decision
 @export var amountOfRows : int = 2   # The total amount of rows the character select is able to show 
