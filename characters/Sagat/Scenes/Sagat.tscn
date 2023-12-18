@@ -1,115 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://dffhvqbqpovey"]
 
 [ext_resource type="Texture2D" uid="uid://dqxeox7e274kd" path="res://characters/Sagat/Asset/Hidle.png" id="1_a2b3e"]
+[ext_resource type="Script" path="res://characters/Sagat/Scripts/Sagat.gd" id="1_imqxj"]
 [ext_resource type="Texture2D" uid="uid://dd2j306mf0d2c" path="res://characters/Sagat/Asset/Crouch.png" id="1_qbra3"]
 [ext_resource type="Texture2D" uid="uid://ch6351u5vnjh6" path="res://characters/Sagat/Asset/Jump.png" id="2_gho1e"]
 [ext_resource type="Texture2D" uid="uid://rr4xd4k34xjj" path="res://characters/Sagat/Asset/Walk.png" id="2_te245"]
 [ext_resource type="Texture2D" uid="uid://dcvke7pkqh7em" path="res://characters/Sagat/Asset/L.Punch.Foward.png" id="4_657gx"]
 [ext_resource type="Texture2D" uid="uid://d1qrfhmmscxi6" path="res://characters/Sagat/Asset/L.Punch.png" id="6_t1k72"]
-
-[sub_resource type="GDScript" id="GDScript_nqbla"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 200.0
-
-
-# Jump
-
-
-var velocity_jump := Vector2.ZERO
-
-@export var jump_height : float
-@export var jump_time_to_peak : float
-@export var jump_time_to_descent : float
-
-@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
-
-
-var is_crouching: bool = false
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-var attack_cooldown_timer = 0.0
-var attack_cooldown_duration = 3 # Cooldown duration for the attack animation in seconds
-var can_attack = true # Variable to check if the player can attack
-var is_attacking = false
-@onready var _animation_player = $AnimatedSprite2D
-func _ready():
-	pass
-	
-	
-func _physics_process(delta):
-	# Add the gravity.
-
-	# Handle Jump.
-	velocity_jump.y += get_gravity() * delta
-	velocity_jump.x = get_input_velocity() * SPEED
-	
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
-		jump()
-	
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"ui_left\", \"ui_right\")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if Input.is_action_pressed(\"ui_down\") :
-		velocity.x = 0
-	elif Input.is_action_pressed(\"L.Punch\") and Input.is_action_pressed(\"ui_right\"):
-		velocity.x = 0
-	move_and_slide()
-
-func _process(delta):
-	
-	if can_attack and Input.is_action_pressed(\"L.Punch\") and Input.is_action_pressed(\"ui_right\") and attack_cooldown_timer <= 0.0:
-		_animation_player.play(\"L.Punch.Forward\")
-		is_attacking = true
-		can_attack = false
-	
-	if can_attack and Input.is_action_just_pressed(\"L.Punch\") and attack_cooldown_timer <= 0.0:
-		_animation_player.play(\"L.punch\")
-		is_attacking = true
-		can_attack = false
-	
-	elif Input.is_action_pressed(\"ui_up\"):
-		if _animation_player.is_playing():
-			_animation_player.play(\"Jump\")
-	elif Input.is_action_pressed(\"ui_right\") or Input.is_action_pressed(\"ui_left\"):
-		_animation_player.play(\"Walk\")
-		
-	elif !can_attack and attack_cooldown_timer <= 0.0:
-		print(\"can attack !\")
-		can_attack = true
-	if !_animation_player.is_playing():
-		_animation_player.play(\"Hidle\")
-		
-	if Input.is_action_pressed(\"ui_down\") :
-		_animation_player.play(\"Crouch\")
-
-
-#Jump 
-
-func get_gravity() -> float:
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
-
-func jump():
-	velocity.y = jump_velocity
-
-func get_input_velocity() -> float:
-	var horizontal := 0.0
-	
-	if Input.is_action_pressed(\"left\"):
-		horizontal -= 1.0
-	if Input.is_action_pressed(\"right\"):
-		horizontal += 1.0
-	
-	return horizontal
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjc0y"]
 atlas = ExtResource("1_qbra3")
@@ -291,11 +188,10 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = SubResource("GDScript_nqbla")
+script = ExtResource("1_imqxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(405, 225)
 sprite_frames = SubResource("SpriteFrames_eekc1")
 animation = &"L.punch"

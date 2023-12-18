@@ -16,6 +16,7 @@ var choice
 @onready var gridContainer = get_parent().get_node("GridContainer")   # Get the Gridcontainer
 
 func _ready():
+	$"../SpriteSelector".hide()
 # Get all of the characters stored within the group "Characters" and place them in the Array characters
 	for nameOfCharacter in get_tree().get_nodes_in_group("Characters"):
 		characters.append(nameOfCharacter)
@@ -70,6 +71,12 @@ func _process(delta):
 		if(CharacterSelectionManager.player == null):
 			CharacterSelectionManager.player = CharacterSelectionManager.selectableCharacters[characters[currentSelected].name]
 			texture = player2Text
+			SpriteSelector.changeSprite(characters[currentSelected].name)
+			$"../SpriteSelector".show()
+			print(characters[currentSelected].name)
+#			if(characters[currentSelected].name == "Sagat"):
+#				$"../../CharacterBody2D".show()
+			
 		else:
 			CharacterSelectionManager.opponent = CharacterSelectionManager.selectableCharacters[characters[currentSelected].name]
-			get_tree().change_scene("")
+			get_tree().change_scene_to_file("res://scenes/battle.tscn")
