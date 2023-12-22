@@ -7,15 +7,7 @@ const SPEED = 300.0
 # Jump
 
 
-var velocity_jump := Vector2.ZERO
-
-@export var jump_height : float
-@export var jump_time_to_peak : float
-@export var jump_time_to_descent : float
-
-@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+const JUMP_VELOCITY = -350.0
 
 
 var is_crouching: bool = false
@@ -32,15 +24,15 @@ func _ready():
 	
 func _physics_process(delta):
 	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
 
 	# Handle Jump.
-	velocity_jump.y += get_gravity() * delta
-	velocity_jump.x = get_input_velocity() * SPEED
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		jump()
-	
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -83,12 +75,6 @@ func _process(delta):
 
 
 #Jump 
-
-func get_gravity() -> float:
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
-
-func jump():
-	velocity.y = jump_velocity
 
 func get_input_velocity() -> float:
 	var horizontal := 0.0
