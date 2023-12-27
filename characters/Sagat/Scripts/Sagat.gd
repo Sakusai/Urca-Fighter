@@ -17,21 +17,15 @@ var attack_cooldown_timer = 0.0
 var attack_cooldown_duration = 3 # Cooldown duration for the attack animation in seconds
 var can_attack = true # Variable to check if the player can attack
 var is_attacking = false
-@onready var _animation_player = $AnimatedSprite2D
+@onready  var _animation_player = $AnimatedSprite2D
 func _ready():
 	_animation_player.play("Hidle")
 	
 	
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		
+
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

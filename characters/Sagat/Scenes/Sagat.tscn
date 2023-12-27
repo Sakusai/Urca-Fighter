@@ -188,9 +188,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcoq4"]
-size = Vector2(49, 104)
+size = Vector2(58.3333, 104)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
 script = ExtResource("1_imqxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -200,5 +202,5 @@ sprite_frames = SubResource("SpriteFrames_eekc1")
 animation = &"Hidle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, 9)
+position = Vector2(0.833332, 9)
 shape = SubResource("RectangleShape2D_pcoq4")
