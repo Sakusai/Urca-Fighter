@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://characters/Blanka/Scripts/Blanka.gd" id="1_7uwrx"]
 [ext_resource type="Texture2D" uid="uid://seo7uf3gj3g1" path="res://characters/Blanka/Assets/Idle.png" id="1_cw1kh"]
-[ext_resource type="Texture2D" uid="uid://dhrms5n0hkg8s" path="res://characters/Blanka/Assets/Block.png" id="1_i3dn0"]
+[ext_resource type="Texture2D" uid="uid://br05r2458thsv" path="res://characters/Blanka/Assets/Block.png" id="1_i3dn0"]
 [ext_resource type="Texture2D" uid="uid://b3k4dwyp37jcl" path="res://characters/Blanka/Assets/Walking.png" id="2_6rt11"]
-[ext_resource type="Texture2D" uid="uid://b76wn66lb6g57" path="res://characters/Blanka/Assets/Hit.PNG" id="2_10d65"]
-[ext_resource type="Texture2D" uid="uid://dw2j16brjploi" path="res://characters/Blanka/Assets/KO.PNG" id="2_o1vob"]
-[ext_resource type="Texture2D" uid="uid://b5rualosujyae" path="res://characters/Blanka/Assets/LPunch.png" id="3_bitbp"]
+[ext_resource type="Texture2D" uid="uid://dunu3t2rb0dhs" path="res://characters/Blanka/Assets/Hit.PNG" id="2_10d65"]
+[ext_resource type="Texture2D" uid="uid://cigdcjjyekcmy" path="res://characters/Blanka/Assets/KO.PNG" id="2_o1vob"]
+[ext_resource type="Texture2D" uid="uid://wc7uegdhdnw1" path="res://characters/Blanka/Assets/LPunch.png" id="3_bitbp"]
 [ext_resource type="Texture2D" uid="uid://cdpohw0n3eqem" path="res://characters/Blanka/Assets/Jump.png" id="3_d8ioe"]
-[ext_resource type="Texture2D" uid="uid://d1orotv7eijtt" path="res://characters/Blanka/Assets/Victory.PNG" id="6_nw38d"]
-[ext_resource type="AudioStream" uid="uid://58if56xhh11s" path="res://asset/song/8-Bit-Punch-Snare-chosic.com_.mp3" id="9_urxsx"]
+[ext_resource type="Texture2D" uid="uid://q7wp6psjig2u" path="res://characters/Blanka/Assets/Victory.PNG" id="6_nw38d"]
+[ext_resource type="AudioStream" uid="uid://bem8eje51qp6k" path="res://asset/song/8-Bit-Punch-Snare-chosic.com_.mp3" id="9_urxsx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ss7di"]
 atlas = ExtResource("1_i3dn0")
@@ -298,9 +298,8 @@ script = ExtResource("1_7uwrx")
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_743e1")
-animation = &"L.Punch"
-frame = 3
-frame_progress = 1.0
+animation = &"Walk"
+frame_progress = 0.290114
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)

@@ -3,15 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://dqxeox7e274kd" path="res://characters/Sagat/Asset/Hidle.png" id="1_a2b3e"]
 [ext_resource type="Script" path="res://characters/Sagat/Scripts/Sagat.gd" id="1_imqxj"]
 [ext_resource type="Texture2D" uid="uid://dd2j306mf0d2c" path="res://characters/Sagat/Asset/Crouch.png" id="1_qbra3"]
-[ext_resource type="Texture2D" uid="uid://dejwqahd68o6i" path="res://characters/Sagat/Asset/blocking.png" id="2_dumds"]
+[ext_resource type="Texture2D" uid="uid://dly1rm7vs7u4" path="res://characters/Sagat/Asset/blocking.png" id="2_dumds"]
 [ext_resource type="Texture2D" uid="uid://ch6351u5vnjh6" path="res://characters/Sagat/Asset/Jump.png" id="2_gho1e"]
 [ext_resource type="Texture2D" uid="uid://rr4xd4k34xjj" path="res://characters/Sagat/Asset/Walk.png" id="2_te245"]
 [ext_resource type="Texture2D" uid="uid://dcvke7pkqh7em" path="res://characters/Sagat/Asset/L.Punch.Foward.png" id="4_657gx"]
-[ext_resource type="Texture2D" uid="uid://1lq4jshiy626" path="res://characters/Sagat/Asset/death-removebg-preview.png" id="4_wpxpq"]
-[ext_resource type="Texture2D" uid="uid://dhn4tj5sdfpnn" path="res://characters/Sagat/Asset/Hit.png" id="5_p26kn"]
+[ext_resource type="Texture2D" uid="uid://crhx6b5ypopu2" path="res://characters/Sagat/Asset/death-removebg-preview.png" id="4_wpxpq"]
+[ext_resource type="Texture2D" uid="uid://c7h0u7lad8ad1" path="res://characters/Sagat/Asset/Hit.png" id="5_p26kn"]
 [ext_resource type="Texture2D" uid="uid://tbjrxrkbhrri" path="res://characters/Sagat/Asset/L.Punch.png" id="6_t1k72"]
-[ext_resource type="Texture2D" uid="uid://bxwesvxgdytox" path="res://characters/Sagat/Asset/Victory.png" id="8_5kwnx"]
-[ext_resource type="AudioStream" uid="uid://dbny3ydkn7i44" path="res://asset/song/8-Bit-Punch-Snare-chosic.com_.mp3" id="12_6ssxb"]
+[ext_resource type="Texture2D" uid="uid://cy5lxfci4gtni" path="res://characters/Sagat/Asset/Victory.png" id="8_5kwnx"]
+[ext_resource type="AudioStream" uid="uid://bem8eje51qp6k" path="res://asset/song/8-Bit-Punch-Snare-chosic.com_.mp3" id="12_6ssxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vquiq"]
 atlas = ExtResource("2_dumds")
@@ -192,7 +192,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y7i3f")
 }],
-"loop": false,
+"loop": true,
 "name": &"Hit",
 "speed": 10.0
 }, {
@@ -314,8 +314,9 @@ script = ExtResource("1_imqxj")
 texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_eekc1")
-animation = &"Victory"
-frame_progress = 0.8914
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 9)
